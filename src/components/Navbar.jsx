@@ -1,10 +1,10 @@
 import React from 'react'
-import { Row } from 'react-bootstrap'
+import { Row, Badge } from 'react-bootstrap'
 import { AiOutlineShoppingCart } from 'react-icons/ai'
 import { useState } from 'react'
 import Cart from './Cart'
 
-const NavBar = () => {
+const NavBar = ({ cart, removeProduct }) => {
   const [showCart, setShowCart] = useState(false)
 
   const toggleCart = () => {
@@ -32,8 +32,13 @@ const NavBar = () => {
             <AiOutlineShoppingCart className="mt-2" onClick={toggleCart} />
             <img className="nav-avatar" src="image-avatar.png" alt="Avatar" />
           </div>
+          {showCart && <Cart cart={cart} removeProduct={removeProduct} />}
+          <h6>
+            <Badge bg="danger" className="cart-badge">
+              {cart.quantity}
+            </Badge>
+          </h6>
         </div>
-        {showCart && <Cart />}
       </div>
     </Row>
   )

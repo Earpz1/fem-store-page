@@ -1,9 +1,21 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { CiShoppingCart } from 'react-icons/ci'
 
 import ProductQuantity from './ProductQuantity'
 
-const ProductDescription = () => {
+const ProductDescription = (props) => {
+  const [quantity, setQuantity] = useState(1)
+
+  const addQuantity = () => {
+    setQuantity(quantity + 1)
+  }
+
+  const removeQuantity = () => {
+    if (quantity !== 1) {
+      setQuantity(quantity - 1)
+    }
+  }
+
   return (
     <div className="description-container">
       <div className="d-flex justify-content-center flex-column">
@@ -20,8 +32,15 @@ const ProductDescription = () => {
         </div>
         <span className="old-product-price">$250.00</span>
         <div className="d-flex">
-          <ProductQuantity />
-          <div className="add-to-cart mt-5 d-flex justify-content-center align-items-center">
+          <ProductQuantity
+            addQuantity={addQuantity}
+            removeQuantity={removeQuantity}
+            quantity={quantity}
+          />
+          <div
+            className="add-to-cart mt-5 d-flex justify-content-center align-items-center"
+            onClick={() => props.addProduct(quantity)}
+          >
             <CiShoppingCart className="cart-icon" /> <span>Add to cart</span>
           </div>
         </div>
