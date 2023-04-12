@@ -16,12 +16,12 @@ const Cart = ({ cart, removeProduct }) => {
             <img src="image-product-1.jpg" className="cart-image" alt="Cart" />
             <div className="d-flex flex-column">
               <span className="cart-product-name">
-                Fall Limited Edition Sneakers
+                Fall Limited Edition Trainers
               </span>
               <span className="cart-product-name">
-                ${cart.price} x {cart.quantity}{' '}
+                £{cart.price} x {cart.quantity}{' '}
                 <span className="product-total-price">
-                  ${cart.quantity * cart.price}
+                  £{cart.quantity * cart.price}
                 </span>
               </span>
             </div>
